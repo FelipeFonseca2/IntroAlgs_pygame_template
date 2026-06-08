@@ -62,11 +62,11 @@ Exemplo:
 
 ## Como executar o projeto
 
-### 1. Clonar o repositório
-
 ```bash
 git clone LINK_DO_REPOSITORIO
 cd NOME_DA_PASTA
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 python main.py
 ```
