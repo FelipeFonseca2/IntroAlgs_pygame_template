@@ -1,15 +1,11 @@
-# Nome do Jogo
+# PySnake
 
 Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
 
-Este repositório é um template para os grupos da disciplina. A proposta é começar com uma base funcional e evoluir o jogo ao longo do semestre.
-
 ## Integrantes do grupo
 
-- Nome do integrante 1
-- Nome do integrante 2
-- Nome do integrante 3
-- Nome do integrante 4
+- Felipe de Castro Fonseca
+- João Pedro Fonseca Baiano
 
 ## Estrutura do projeto
 
@@ -22,47 +18,28 @@ Este repositório é um template para os grupos da disciplina. A proposta é com
 
 ## Descrição do jogo
 
-Descreva brevemente a ideia principal do jogo.
-
-Exemplo:
-
-> O jogo consiste em controlar um personagem que deve coletar moedas e evitar obstáculos. O jogador ganha pontos ao coletar itens e perde vidas ao colidir com obstáculos. A partida termina quando o tempo acaba ou quando o jogador perde todas as vidas.
+> O jogo é uma versão do clássico Snake. O jogador controla uma cobra que se movimenta continuamente pela tela e deve guiá-la até a comida. Cada comida coletada aumenta a pontuação e faz a cobra crescer um segmento, tornando a movimentação progressivamente mais difícil. O desafio é não colidir com as paredes nem com o próprio corpo.
 
 ## Objetivo do jogador
 
-Explique o que o jogador precisa fazer para vencer ou avançar no jogo.
-
-Exemplo:
-
-> O objetivo é coletar a maior quantidade possível de itens antes que o tempo acabe, evitando colisões com os obstáculos.
+> Obter a maior pontuação possível comendo o maior número de comidas sem colidir com as paredes nem com o próprio corpo, tentando superar o recorde salvo.
 
 ## Regras do jogo
 
-Liste as principais regras do jogo.
-
-Exemplo:
-
-- O jogador se movimenta usando as setas do teclado.
-- Cada item coletado aumenta a pontuação.
-- Colidir com um obstáculo reduz a quantidade de vidas.
-- A partida termina quando o jogador perde todas as vidas ou quando o tempo acaba.
+- A cobra se movimenta de forma contínua e automática na direção atual; o jogador apenas altera a direção.
+- Cada comida coletada vale 10 pontos e faz a cobra crescer 1 segmento.
+- A cobra não pode inverter o sentido diretamente (ex.: indo para a direita, não pode ir instantaneamente para a esquerda).
+- Colidir com uma parede ou com o próprio corpo encerra a partida.
+- Ao fim da partida, se a pontuação for maior que o recorde salvo, ele é atualizado.
 
 ## Controles
 
-Informe as teclas ou comandos utilizados no jogo.
-
-Exemplo:
-
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
+- Seta para cima: mover a cobra para cima
+- Seta para baixo: mover a cobra para baixo
+- Seta para esquerda: mover a cobra para a esquerda
+- Seta para direita: mover a cobra para a direita
 
 ## Como executar o projeto
-
-### 1. Clonar o repositório
 
 ```bash
 git clone LINK_DO_REPOSITORIO
