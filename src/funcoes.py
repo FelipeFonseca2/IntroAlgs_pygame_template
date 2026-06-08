@@ -1,42 +1,16 @@
-import random
-
-
 def calcular_pontos(pontos_atual, pontos_ganhos):
     """Soma os pontos ganhos à pontuação atual."""
     return pontos_atual + pontos_ganhos
 
 
-def proxima_posicao(cabeca, direcao):
-    """Calcula a próxima posição (linha, coluna) da cabeça da cobra."""
-    linha, coluna = cabeca
-    delta_linha, delta_coluna = direcao
-    return (linha + delta_linha, coluna + delta_coluna)
+def tomar_dano(vida_atual, dano):
+    """Reduz a vida atual com base no dano recebido."""
+    return vida_atual - dano
 
 
-def colidiu_com_parede(posicao, colunas, linhas):
-    """Verifica se a posição está fora dos limites da grade."""
-    linha, coluna = posicao
-    return coluna < 0 or coluna >= colunas or linha < 0 or linha >= linhas
-
-
-def colidiu_com_corpo(posicao, corpo):
-    """Verifica se a posição colide com algum segmento do corpo da cobra."""
-    return posicao in corpo
-
-
-def direcao_valida(direcao_atual, nova_direcao):
-    """Impede que a cobra inverta o sentido diretamente (ex.: direita -> esquerda)."""
-    linha_atual, coluna_atual = direcao_atual
-    nova_linha, nova_coluna = nova_direcao
-    return (linha_atual, coluna_atual) != (-nova_linha, -nova_coluna)
-
-
-def gerar_posicao_comida(corpo, colunas, linhas):
-    """Sorteia uma posição livre da grade para a comida."""
-    while True:
-        posicao = (random.randint(0, linhas - 1), random.randint(0, colunas - 1))
-        if posicao not in corpo:
-            return posicao
+def jogador_perdeu(vidas):
+    """Indica se o jogador ficou sem vidas."""
+    return vidas <= 0
 
 
 def limitar_valor(valor, minimo, maximo):
@@ -46,3 +20,8 @@ def limitar_valor(valor, minimo, maximo):
     if valor > maximo:
         return maximo
     return valor
+
+
+def verificar_colisao(retangulo_1, retangulo_2):
+    """Verifica sobreposição entre dois retângulos do Pygame."""
+    return retangulo_1.colliderect(retangulo_2)
