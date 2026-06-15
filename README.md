@@ -1,13 +1,11 @@
-# Nome do Jogo
+# PySnake
 
 Projeto final da disciplina de Introdução a Algoritmos/Programação, desenvolvido com Python e Pygame.
-
-Este repositório é um template para os grupos da disciplina. A proposta é começar com uma base funcional e evoluir o jogo ao longo do semestre.
 
 ## Integrantes do grupo
 
 - Felipe de Castro Fonseca
-- João Pedro Fonseca Baião
+- João Pedro Fonseca Baiano
 
 ## Estrutura do projeto
 
@@ -20,35 +18,35 @@ Este repositório é um template para os grupos da disciplina. A proposta é com
 
 ## Descrição do jogo
 
-O jogo consiste em controlar um personagem que deve coletar moedas e evitar obstáculos. O jogador ganha pontos ao coletar itens e perde vidas ao colidir com obstáculos. A partida termina quando o tempo acaba ou quando o jogador perde todas as vidas.
+> O jogo é uma versão do clássico Snake. O jogador controla uma cobra que se movimenta continuamente pela tela e deve guiá-la até a comida. Cada comida coletada aumenta a pontuação e faz a cobra crescer um segmento, tornando a movimentação progressivamente mais difícil. O desafio é não colidir com as paredes nem com o próprio corpo.
 
 ## Objetivo do jogador
 
-O objetivo é coletar a maior quantidade possível de itens antes que o tempo acabe, evitando colisões com os obstáculos.
+> Obter a maior pontuação possível comendo o maior número de comidas sem colidir com as paredes nem com o próprio corpo, tentando superar o recorde e atingir a meta de 2000 pontos para vencer.
 
 ## Regras do jogo
 
-- O jogador se movimenta usando as setas do teclado.
-- Cada item coletado aumenta a pontuação.
-- Colidir com um obstáculo reduz a quantidade de vidas.
-- A partida termina quando o jogador perde todas as vidas ou quando o tempo acaba.
+- A cobra se movimenta de forma contínua e automática na direção atual; o jogador apenas altera a direção.
+- Cada comida coletada vale 10 pontos e faz a cobra crescer 1 segmento.
+- A cobra não pode inverter o sentido diretamente (ex.: indo para a direita, não pode ir instantaneamente para a esquerda).
+- Colidir com uma parede ou com o próprio corpo encerra a partida.
+- Atingir 2000 pontos é a condição de vitória.
+- Ao fim de cada partida, a pontuação é adicionada ao ranking das 5 melhores e salva em arquivo.
 
 ## Controles
 
-- Seta para cima: mover para cima
-- Seta para baixo: mover para baixo
-- Seta para esquerda: mover para esquerda
-- Seta para direita: mover para direita
-- Espaço: realizar ação
-- ESC: sair do jogo
+- Seta para cima: mover a cobra para cima
+- Seta para baixo: mover a cobra para baixo
+- Seta para esquerda: mover a cobra para a esquerda
+- Seta para direita: mover a cobra para a direita
+- Enter: reiniciar a partida (na tela de game over ou vitória)
+- ESC: sair do jogo (na tela de game over ou vitória)
 
 ## Como executar o projeto
 
-### 1. Clonar o repositório
-
 ```bash
-git clone LINK_DO_REPOSITORIO
-cd NOME_DA_PASTA
+python -m venv .venv
+.venv\Scripts\activate
 pip install -r requirements.txt
 python main.py
 ```
@@ -58,16 +56,3 @@ python main.py
 ```bash
 python -m pytest
 ```
-
-## Checklist mínimo para entrega
-
-- Preencher este README com nome final, descrição real, regras e controles do jogo.
-- Atualizar `docs/proposta.MD` com a proposta do grupo.
-- Garantir que o jogo executa com `python main.py`.
-- Garantir que os testes passam com `pytest`.
-
-## Observações para os alunos
-
-- Mantenham o código organizado em módulos pequenos e com responsabilidade clara.
-- Comentem partes importantes da lógica, principalmente regras do jogo.
-- Registrem decisões técnicas no README do grupo ao longo do desenvolvimento.

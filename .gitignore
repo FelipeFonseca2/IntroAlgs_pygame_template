@@ -1,0 +1,26 @@
+# Ambiente virtual (nunca versionar — contém caminhos absolutos do PC local)
+.venv/
+venv/
+env/
+
+# Cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Pytest
+.pytest_cache/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Dados gerados em tempo de execução
+data/recorde.txt
+data/ranking.txt
+
+# Sistema operacional
+.DS_Store
+Thumbs.db

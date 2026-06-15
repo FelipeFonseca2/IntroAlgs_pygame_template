@@ -6,7 +6,8 @@
 
 ## 2. Integrantes do grupo
 
-- Nome 1: Felipe de Castro Fonseca
+- Felipe de Castro Fonseca
+- João Pedro Fonseca Baiano
 
 ## 3. Tipo de jogo
 
@@ -14,88 +15,108 @@
 
 ## 4. Descrição geral do jogo
 
-> Na tela aparece uma área de jogo em formato de grade, uma cobra formada por vários segmentos e uma comida posicionada aleatoriamente. No topo da tela (e/ou no título da janela) são exibidos a pontuação atual e o recorde.
+> Na tela aparece uma área de jogo em formato de grade com fundo xadrez, uma cobra com sprites visuais formada por vários segmentos e uma maçã posicionada aleatoriamente. A pontuação atual e o recorde são exibidos no título da janela.
 >
 > O jogador controla apenas a direção da cobra usando as setas do teclado; a cobra se movimenta sozinha, de forma contínua, na direção escolhida.
 >
-> O objetivo é guiar a cobra até a comida para comê-la: cada comida aumenta a pontuação e faz a cobra crescer um segmento. À medida que a cobra cresce, fica mais difícil se movimentar sem colidir.
+> O objetivo é guiar a cobra até a maçã para comê-la: cada maçã coletada aumenta a pontuação em 10 pontos e faz a cobra crescer um segmento. À medida que a cobra cresce, fica mais difícil se movimentar sem colidir.
 >
 > Os desafios principais são não bater nas paredes e não colidir com o próprio corpo, que vai ficando cada vez maior ao longo da partida.
 
 ## 5. Objetivo do jogador
 
-> Obter a maior pontuação possível, comendo o maior número de comidas sem colidir com as paredes nem com o próprio corpo, tentando superar o recorde salvo no ranking.
+> Obter a maior pontuação possível comendo o maior número de maçãs sem colidir com as paredes nem com o próprio corpo, tentando superar o recorde e atingir a meta de 2000 pontos para vencer.
 
 ## 6. Regras principais
 
 - Regra 1: A cobra se movimenta de forma contínua e automática na direção atual; o jogador apenas altera a direção.
-- Regra 2: Cada comida coletada vale 10 pontos e faz a cobra crescer 1 segmento.
+- Regra 2: Cada maçã coletada vale 10 pontos e faz a cobra crescer 1 segmento.
 - Regra 3: A cobra não pode inverter o sentido diretamente (ex.: indo para a direita, não pode passar instantaneamente para a esquerda).
 - Regra 4: Colidir com uma parede ou com o próprio corpo encerra a partida.
-- Regra 5: Ao fim da partida, a pontuação é comparada ao ranking e, se for uma das melhores, é salva em arquivo.
+- Regra 5: Atingir 2000 pontos é a condição de vitória e exibe uma tela de parabéns.
+- Regra 6: Ao fim de cada partida, a pontuação é adicionada ao ranking das 5 melhores e salva em arquivo.
 
 ## 7. Condição de vitória
 
-> Como o Snake é um jogo de pontuação contínua, definimos a "vitória" como atingir uma pontuação-alvo configurável (por exemplo, 200 pontos), que exibe uma tela de parabéns. O objetivo de longo prazo é sempre superar o recorde registrado no ranking.
+> Atingir 2000 pontos. Ao alcançar essa meta, é exibida uma tela de vitória com a pontuação final e o ranking. O objetivo de longo prazo é sempre superar o recorde registrado.
 
 ## 8. Condição de derrota ou encerramento
 
-> A partida termina quando a cobra colide com uma das paredes da área de jogo ou com o próprio corpo. Nesse momento é exibida a tela de fim de jogo com a pontuação final.
+> A partida termina quando a cobra colide com uma das paredes da área de jogo ou com o próprio corpo. É exibida uma tela de game over com a pontuação final e o ranking.
 
-## 9. Elementos previstos no jogo
+## 9. Elementos do jogo
 
-## Jogador ou elemento principal
+### Jogador ou elemento principal
 
-> A cobra, representada por uma lista de coordenadas (cada segmento é uma posição na grade). É controlada pelas setas do teclado e cresce a cada comida coletada.
+> A cobra, representada por uma lista de tuplas `(linha, coluna)`. Possui sprites distintos para cabeça (4 direções), corpo (reto e curvas) e cauda (4 direções). É controlada pelas setas do teclado e cresce a cada maçã coletada.
 
-## Obstáculos, inimigos ou desafios
+### Obstáculos, inimigos ou desafios
 
-> As paredes da área de jogo e o próprio corpo da cobra, que aumenta a cada comida e torna a movimentação progressivamente mais difícil.
+> As paredes da área de jogo e o próprio corpo da cobra, que aumenta a cada maçã e torna a movimentação progressivamente mais difícil.
 
-## Itens, alvos ou objetos de interação
+### Itens, alvos ou objetos de interação
 
-> A comida (uma maçã), que aparece em uma posição aleatória livre da grade. Quando a cobra a alcança, a comida some, a pontuação aumenta, a cobra cresce e uma nova comida é gerada em outro lugar.
+> A maçã, que aparece em uma posição aleatória livre da grade. Quando a cobra a alcança, a pontuação aumenta, a cobra cresce e uma nova maçã é gerada em outro lugar. Um som de coleta é reproduzido ao comer.
 
-## Pontuação, vidas, tempo ou progresso
+### Pontuação e ranking
 
-> O jogo usa um sistema de pontuação (10 pontos por comida) exibido na tela, e um ranking/recorde salvo em arquivo. As estruturas de dados previstas são: uma lista de tuplas para o corpo da cobra, tuplas para as coordenadas (linha, coluna), um dicionário para as configurações do jogo e uma lista de dicionários para o ranking (nome e pontuação).
+> O jogo usa um sistema de pontuação (10 pontos por maçã) exibido no título da janela, um recorde individual e um ranking das 5 melhores pontuações, ambos salvos em arquivos de texto.
 
-## 10. Controles previstos
+## 10. Controles
 
 - Seta para cima: mover a cobra para cima
 - Seta para baixo: mover a cobra para baixo
 - Seta para esquerda: mover a cobra para a esquerda
 - Seta para direita: mover a cobra para a direita
-- Enter / Espaço: iniciar ou reiniciar a partida
-- ESC: sair do jogo
+- Enter: reiniciar a partida (na tela de game over ou vitória)
+- ESC: sair do jogo (na tela de game over ou vitória)
 
-## 11. Organização inicial do código
+## 11. Organização do código
 
 > - `main.py`: inicia o jogo;
-> - `src/jogo.py`: contém o loop principal e o controle de estados (jogando, fim de jogo);
-> - `src/config.py`: guarda configurações como tamanho da tela, tamanho da grade, cores, velocidade e pontuação-alvo;
-> - `src/funcoes.py`: funções auxiliares (mover a cobra, detectar colisões, gerar comida, calcular pontuação, desenhar os elementos);
-> - `src/dados.py`: funções de leitura e escrita do ranking/recorde em arquivo;
-> - `tests/test_funcoes.py`: testes simples das funções de lógica (colisão, crescimento, pontuação, geração de comida);
-> - `docs/proposta.md`: este documento;
-> - `README.md`: documentação básica do projeto.
+> - `src/jogo.py`: loop principal, controle de estados (jogando, game over, vitória) e renderização com sprites;
+> - `src/config.py`: configurações (tamanho da tela, grade, cores, velocidade, pontuação-alvo, caminhos de assets);
+> - `src/funcoes.py`: funções de lógica (movimento, colisões, direção válida, geração de comida, pontuação);
+> - `src/dados.py`: leitura e escrita do recorde e do ranking em arquivo;
+> - `assets/imagens/`: sprites da cobra e da maçã (PNG);
+> - `assets/fontes/`: fonte Kenney Pixel (TTF);
+> - `assets/sons/`: efeito sonoro de coleta (OGG);
+> - `tests/test_logica.py`: 12 testes das funções de lógica com pytest;
+> - `docs/proposta.MD`: este documento;
+> - `README.md`: documentação do projeto.
 
-## 12. Recursos externos previstos
+## 12. Recursos externos utilizados
 
-> Pretendemos manter o jogo simples, usando principalmente formas geométricas desenhadas pelo próprio Pygame. Caso haja tempo, poderemos incluir alguns sons gratuitos (ex.: efeito ao comer) e uma fonte personalizada gratuita. Tutoriais poderão ser usados apenas como referência. O ranking será gravado em um arquivo (texto ou JSON) dentro do próprio projeto.
+> - Sprites da cobra e maçã: OpenGameArt.org (licença livre)
+> - Fonte: Kenney Pixel (kenney.nl, licença CC0)
+> - Som de coleta: EatSound por EugeneLoza (CC0)
+> - Biblioteca: pygame-ce (fork do pygame com suporte a Python 3.14)
 
-## 13. Principais dificuldades esperadas
+## 13. Estruturas de dados utilizadas
 
-- Dificuldade 1: Detecção de colisão (com as paredes e com o próprio corpo da cobra).
-- Dificuldade 2: Controle da movimentação contínua, impedindo a inversão imediata de direção.
-- Dificuldade 3: Leitura e escrita do ranking em arquivo, além da organização modular do código e do uso do GitHub.
+> - Lista de tuplas `(linha, coluna)` para o corpo da cobra
+> - Tuplas para coordenadas e direções de movimento
+> - Lista de inteiros para o ranking (top 5)
+> - Dicionários para mapeamento de sprites por direção/estado
 
-## 14. Escopo mínimo para a entrega final
+## 14. Uso de arquivos
 
-> A versão mínima terá: uma cobra controlada pelas setas, comida que aparece aleatoriamente e aumenta a pontuação e o tamanho da cobra, detecção de colisão com as paredes e com o próprio corpo, exibição da pontuação na tela, tela de fim de jogo e ranking salvo em arquivo. O código será organizado em funções e módulos, com testes simples para as funções de lógica.
+> - `data/recorde.txt`: armazena o maior recorde em texto simples
+> - `data/ranking.txt`: armazena as 5 melhores pontuações, uma por linha
 
-## 15. Possíveis melhorias, caso haja tempo
+## 15. Principais dificuldades encontradas
 
-- Melhoria 1: Tela inicial / menu e menu de pausa.
-- Melhoria 2: Aumento progressivo da velocidade conforme a pontuação cresce.
-- Melhoria 3: Sons, efeitos visuais e obstáculos extras (ou modo com bordas que teleportam a cobra para o lado oposto).
+- Detecção de colisão com as paredes e com o próprio corpo da cobra.
+- Controle da movimentação contínua, impedindo a inversão imediata de direção.
+- Mapeamento correto dos sprites de curva do corpo da cobra para cada combinação de direções.
+- Compatibilidade do pygame com Python 3.14 (resolvida com pygame-ce).
+
+## 16. Escopo mínimo entregue
+
+> Cobra controlada pelas setas, maçã aleatória que aumenta pontuação e tamanho, detecção de colisão com paredes e corpo, tela de game over e tela de vitória, ranking das 5 melhores pontuações salvo em arquivo, sprites visuais, fonte personalizada e efeito sonoro.
+
+## 17. Possíveis melhorias futuras
+
+- Tela inicial com menu e menu de pausa.
+- Aumento progressivo da velocidade conforme a pontuação cresce.
+- Obstáculos extras ou modo com bordas que teleportam a cobra para o lado oposto.
